@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+<h1>JS: Eventos</h1>
+
+<button id="btn1">
+    Clique aqui
+</button>
+
+<button id="btn2">
+    Clique aqui (btn2)
+</button>
+
+<script>
+
+    function enviarEmailAdmin() {
+        console.log('Enviando email para admin do sistema...');
+    }
+
+    function salvarDadosDb() {
+        console.log('Salvar dados no banco de dados!!!');
+    }
+
+    // event handlers (arquivo1.js)
+    btn1.onclick = enviarEmailAdmin;
+    // arquivo2.js
+    btn1.onclick = salvarDadosDb;
+
+
+    // event listeners
+    btn2.addEventListener('click', enviarEmailAdmin);
+    btn2.addEventListener('click', salvarDadosDb);
+    btn2.addEventListener('click', function() {
+        console.log('Processamento executado com sucesso!');
+    });
+
+</script>

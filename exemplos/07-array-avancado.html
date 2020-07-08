@@ -1,0 +1,56 @@
+<meta charset="utf-8">
+<h1>Arrays Avançado</h1>
+<script>
+
+    // Higher-Order Functions: são funções que recebem outras funções como parâmetro ou retornam funções como resultado de seu processamento
+
+    const usuarios = [
+        { user: 'usuario1', idade: 32, ativo: true },
+        { user: 'usuario2', idade: 27, ativo: true },
+        { user: 'usuario3', idade: 21, ativo: false }
+    ];
+
+    console.table(usuarios);
+
+    // forEach(): percorre arrays recebendo cada item do array como parâmetro da função callback usada
+    usuarios.forEach((usuario, indice) => {
+        console.log('indice: ', indice);
+        console.log('username: ', usuario.user);
+        console.log('idade: ', usuario.idade);
+    });
+
+    // find(): percorre um array e retorna o primeiro elemento/item que atender a condição especificada
+    let usuarioEncontrado = usuarios.find(usuario => usuario.idade < 30 && !usuario.ativo);
+    console.log('1º Usuario menos de 30 anos inativo: ', usuarioEncontrado);
+
+    // findIndex(): percorre um array e retorna a posição do primeiro item/elemento que atender a condição especificada
+    let posicaoUsuario = usuarios.findIndex(usuario => usuario.idade < 30 && !usuario.ativo);
+    console.log('Posição do usuário: ', posicaoUsuario);
+
+    // filter(): percorre um array e retorna todos os elementos que atendem a condição especificada
+    const usuariosMenos30 = usuarios.filter(usuario => usuario.idade < 30);
+    console.log('Todos os usuários com menos de 30: ', usuariosMenos30);
+
+    // some(): percorre um array e checa se ao menos 1 elemento atende a condição especificada, se sim retorna TRUE, caso contrário FALSE
+    const temAlguemInativo = usuarios.some(usuario => usuario.ativo === false);
+    console.log('Tem alguém inativo: ', temAlguemInativo);
+
+    // every(): percorre um array e checa se TODOS os elementos atendem a condição especificada, se sim retorna TRUE, caso contrário FALSE
+    const todosEstaoAtivos = usuarios.every(usuario => usuario.ativo === true);
+    console.log('Todos estão ativos: ', todosEstaoAtivos);
+
+    // map(): percorre um array e gera um novo array com base nas informações do array percorrido
+    // const idadesUsuarios = usuarios.map(usuario => [usuario.user, usuario.idade, usuario.ativo]);// array bidimensional com as informações de cada usuário
+    const idadesUsuarios = usuarios.map(usuario => usuario.idade);
+    console.log(idadesUsuarios);
+
+    // reduce(): reduz os valores de um array a um único resultado e o retorna
+    let somaIdades = usuarios.reduce((valorAcumulado, usuario) => valorAcumulado + usuario.idade, 0);
+    console.log('Total das idades: ', somaIdades);
+
+    // sintaxe do reduce():
+    // usuarios.reduce(funcaoCallBack, valorInicialDoAcumulador)
+
+
+
+</script>

@@ -1,0 +1,39 @@
+<meta charset="utf-8">
+<h1>JS: Condicionais</h1>
+
+<script>
+
+    let idade = 16;
+
+    if (idade < 18) {
+        document.write('Você é menor de idade!');
+    }
+    else {
+        document.write('Você é maior de idade!');
+    }
+
+
+    // Operador ternário
+    let sexo = 'M';
+    let mensagem = (sexo === 'M') ? 'Você é um Homem!' : 'Você é uma mulher!';
+    document.write('<br>' + mensagem);
+
+    // switch
+    let estado = 'SP';
+    switch (estado)
+    {
+        case 'ES':
+        case 'MG':
+        case 'RJ':
+        case 'SP':
+            document.write('<br>Região Sudeste');
+        break;
+        case 'RS':
+            document.write('<br>Região Sul');
+        break;
+        default:
+            document.write('<br> Não sabemos sua região!');
+        break;
+    }
+
+</script>

@@ -1,0 +1,28 @@
+<meta charset="utf-8">
+<h1>JS: Funções / Hoisting</h1>
+
+<script>
+
+    // function declaration (Tem comportamento de Hoisting)
+    mostrarMensagem();
+    function mostrarMensagem() {
+        console.log('Minha mensagem!!!');
+    }
+
+    // function expression (NÃO TEM HOISTING)
+    // dizerNome(); // Dá pau!!!
+    const dizerNome = function() {
+        console.log('Meu nome é: Jhonatan!');
+    }
+    dizerNome(); // OK
+
+    // ES6 = Arrow Function
+    const exibirPalavra = palavra => console.log('Sua palavra é: ', palavra);
+    const somar = (v1, v2) => v1 + v2;
+
+    let resultado = somar(2, 5);
+    console.log(resultado);
+
+    exibirPalavra('Tabuleiro');
+
+</script>

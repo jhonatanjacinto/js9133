@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+<h1>Arrays</h1>
+<script>
+
+    const nomes = ['Adriana', 'Mateus', 'Ricardo'];
+
+    // pop(): remove o último item de um array e o retorna
+    let nomeRemovido = nomes.pop();
+    console.log('Nome removido: ', nomeRemovido);
+    console.log(nomes);
+
+    // shift(): remove o primeiro item de um array e o retorna
+    let primeiroRemovido = nomes.shift();
+    console.log('Primeiro nome removido: ', primeiroRemovido);
+    console.log(nomes);
+
+    // push(...valores): adiciona um ou mais valores no final do array
+    nomes.push('Stéphany', 'Lilian', 'Gilmar');
+    console.log(nomes);
+
+    // unshift(...valores): adiciona um ou mais valores no início do array
+    nomes.unshift('Mara', 'José');
+    console.log(nomes);
+
+    // join(separador): converte um array em string e separa seus itens usando o separador definido no parâmetro
+    console.log( nomes.join(', ') );
+
+    // reverse(): inverte a ordem do array
+    nomes.reverse();
+    console.log(nomes);
+
+    // splice(): adicionar ou remover um ou mais itens do array numa posição específica
+    nomes.splice(1, 0, "Valéria", "Marcos", "Gabriel");
+    console.log(nomes);
+
+    // length: propriedade que retorna a quantidade de itens num array
+    console.log( nomes.length );
+
+
+
+</script>

@@ -1,0 +1,84 @@
+<meta charset="utf-8">
+<h1>JS: Variáveis e Constantes</h1>
+
+<script>
+
+    'use strict';
+    /* 
+        'use strict' proibe:
+            1) Declaração de variáveis e constantes sem o comando var/let/const;
+            2) O comando with();
+            3) Parâmetros duplicados em funções
+            4) Muda o comportamento da palavra-chave "this"
+    */
+
+    // ECMAScript 5 = variáveis com var
+    // "var" só respeita 2 tipos de escopo: função ou global
+    var a = 555;
+    if (true) {
+        var b = a;
+    }
+
+    function teste() {
+        var c = a;
+        console.log('Valor de c dentro da função: ', c); // OK
+    }
+    teste();
+
+    console.log('Variavel b: ', b);
+    // console.log('Valor de c: ', c); // ReferenceError
+
+    for (var i = 1; i <= 3; i++) {
+        console.log('i: ', i);
+    }
+    console.log('i final: ', i);
+
+    // ECMAScript 6: variáveis com let
+    let d = 888; // variável global
+    if (true) {
+        let e = d;
+        console.log('O e aqui existe: ', e); // OK
+    }
+    // console.log('E: ', e); // ReferenceError
+
+    // Constantes
+    const x = 888;
+    // x = 999; // TypeError: reatribuição inválida
+
+    // Arrays
+    const animais = ['Gato', 'Rato', 'Cachorro'];
+    console.log(animais);
+    animais.push('Girafa');
+    animais.shift();
+    console.log(animais);
+    // animais = []; // TypeError
+
+    // Objetos Literais
+    const pessoa = {
+        // propriedades
+        nome: 'Henrique',
+        idade: 28,
+        email: 'jhonatanjacinto@gmail.com',
+
+        // métodos (ES5)
+        dizerOla: function() {
+            console.log('Olá, menu nome é: ', this.nome);
+        },
+
+        // método (ES6+)
+        dizerTchau() {
+            console.log('Tchau tchau!!!');
+        }
+    }
+
+    // Objeto Original
+    console.log(pessoa);
+    console.log('Nome da pessoa: ', pessoa.nome);
+    pessoa.nome = "Fabiana";
+    pessoa.cidade = 'Barueri';
+    console.log('Nome da pessoa: ', pessoa.nome);
+    console.log(pessoa);
+    pessoa.dizerOla();
+    pessoa.dizerTchau();
+
+</script>
