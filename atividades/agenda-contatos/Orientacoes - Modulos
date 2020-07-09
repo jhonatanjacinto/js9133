@@ -1,0 +1,11 @@
+Arquivos
+    - js/contatos.js = módulo responsável por gerenciar a lista de contatos em memória
+                       - adicionar contatos na lista
+                       - acesso à lista de contatos
+                       - validar as informações (?)
+
+    - js/formNovoContato.js = módulo responsável por gerenciar o formulário de coleta de informações do novo contato a ser adicionado
+                              - coletar informações da interface
+
+    - js/tabelaContatos.js = módulo responsável por exibir a lista de contatos cadastrados na tabela para o usuário
+                             - exibir os contatos que estão guardados em memória na lista
