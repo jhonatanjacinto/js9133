@@ -1,1 +1,1 @@
-
+import './formProduto.js';

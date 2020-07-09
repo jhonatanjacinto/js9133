@@ -1,37 +1,28 @@
-// IIFE = Immediately invoked function expression
-const moduloTabela = (function() {
+import { getProdutos, getTotal } from "./pedido.js";
+import { formataMoeda } from "./utils/formataMoeda.js";
 
-    exibirProdutosDoPedido();
+export function exibirProdutosDoPedido()
+{
+    console.log('Função chamada para exibir produtos do pedido!!!');
 
-    function exibirProdutosDoPedido()
-    {
-        console.log('Função chamada para exibir produtos do pedido!!!');
+    let tr = '';
+    const listaProdutos = getProdutos();
+    let totalPedido = getTotal();
 
-        let tr = '';
-        const listaProdutos = moduloPedido.getProdutos();
-        let totalPedido = moduloPedido.getTotal();
+    listaProdutos.forEach(produtoSelecionado => {
+        tr += `
+            <tr>
+                <td width="10%">
+                    <img src="imagens/pizzas/${produtoSelecionado.foto}" alt="" width="100%" />
+                </td>
+                <td>${produtoSelecionado.nome}</td>
+                <td>${produtoSelecionado.quantidade}</td>
+                <td>${formataMoeda(produtoSelecionado.preco)}</td>
+                <td>${formataMoeda(produtoSelecionado.preco * produtoSelecionado.quantidade)}</td>
+            </tr>
+        `;
+    });
 
-        listaProdutos.forEach(produtoSelecionado => {
-            tr += `
-                <tr>
-                    <td width="10%">
-                        <img src="imagens/pizzas/${produtoSelecionado.foto}" alt="" width="100%" />
-                    </td>
-                    <td>${produtoSelecionado.nome}</td>
-                    <td>${produtoSelecionado.quantidade}</td>
-                    <td>${formataMoeda(produtoSelecionado.preco)}</td>
-                    <td>${formataMoeda(produtoSelecionado.preco * produtoSelecionado.quantidade)}</td>
-                </tr>
-            `;
-        });
-    
-        tbodyProdutos.innerHTML = tr;
-        tdTotalPedido.innerHTML = formataMoeda(totalPedido);
-    }
-
-    return {
-        exibirProdutosDoPedido
-    }
-
-})();
-
+    tbodyProdutos.innerHTML = tr;
+    tdTotalPedido.innerHTML = formataMoeda(totalPedido);
+}
