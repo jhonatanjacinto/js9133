@@ -1,10 +1,10 @@
-(function() {
+import { adicionarContato } from "./contatos.js";
 
-    btnSalvar.addEventListener('click', () => {
-        let nome = inputNome.value.trim();
-        let telefone = inputTelefone.value.trim();
-        moduloContatos.adicionarContato(nome, telefone);
-    });
+btnSalvar.addEventListener('click', () => {
+    let nome = inputNome.value.trim();
+    let telefone = inputTelefone.value.trim();
+    adicionarContato(nome, telefone);
+});
 
-})();
+
 

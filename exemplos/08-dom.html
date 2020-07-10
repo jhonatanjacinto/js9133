@@ -1,0 +1,39 @@
+<meta charset="utf-8">
+<h1>JavaScript no Front-end: document</h1>
+
+<p>Parágrafo 1</p>
+<p class="vermelho">Parágrafo 2</p>
+<p>Parágrafo 3</p>
+<p class="vermelho">Parágrafo 4</p>
+<p>Parágrafo 5</p>
+<span>Span sem classe vermelho</span><br>
+<span class="vermelho">Span com classe vermelho</span>
+<div id="minhaDiv">
+    Div solta com um conteúdo qualquer
+</div>
+
+<style>
+    .vermelho { color: red; }
+    #minhaDiv { background: yellow; }
+</style>
+
+<script>
+
+    // querySelector(seletor): retorna o primeiro elemento encontrado na DOM (html) que atenda ao seletor
+    const meuParagrafo = document.querySelector('p');
+    meuParagrafo.innerHTML = 'Javascript trocou o texto desse parágrafo...';
+    meuParagrafo.style.fontStyle = 'italic';
+
+    // querySelectorAll(seletor): retorna todos os elementos HTML que atendam ao seletor CSS especificado
+    const vermelhos = document.querySelectorAll('.vermelho');
+    console.log(vermelhos);
+
+    for (let elemento of vermelhos) {
+        elemento.innerHTML = 'Trocando o texto dos vermelhos...';
+    }
+
+    vermelhos.forEach(elemento => elemento.innerHTML = 'Trocando o texto de novo...');
+    
+
+</script>
+

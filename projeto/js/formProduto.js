@@ -1,6 +1,10 @@
-import { adicionarProduto } from "./pedido.js";
-import { exibirProdutosDoPedido } from "./tabelaProdutosPedido.js";
+import * as Pedido from "./pedido.js";
+import * as Tabela from "./tabelaProdutosPedido.js";
 
+// guardar referências do HTML
+const btnAdicionarProduto = document.querySelector('#btnAdicionarProduto');
+const seletor_produto = document.querySelector('#seletor_produto');
+const input_quantidade = document.querySelector('#input_quantidade');
 
 const listaProdutos = [
     { id: 1, nome: "Pizza de Calabresa", foto: 'pizza-calabresa.jpg', preco: 52.99 },
@@ -43,7 +47,7 @@ btnAdicionarProduto.addEventListener('click', () => {
     else 
     {
         produtoSelecionado.quantidade = qtd;
-        adicionarProduto(produtoSelecionado);
-        exibirProdutosDoPedido();
+        Pedido.adicionarProduto(produtoSelecionado);
+        Tabela.exibirProdutosDoPedido();
     }
 });

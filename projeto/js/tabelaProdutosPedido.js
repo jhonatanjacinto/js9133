@@ -1,13 +1,18 @@
-import { getProdutos, getTotal } from "./pedido.js";
-import { formataMoeda } from "./utils/formataMoeda.js";
+import * as Pedido from "./pedido.js";
+import formataMoeda from "./utils/formataMoeda.js";
 
+// Guardar as referências do HTML
+const tbodyProdutos = document.querySelector('#tbodyProdutos');
+const tdTotalPedido = document.querySelector('#tdTotalPedido');
+
+exibirProdutosDoPedido();
 export function exibirProdutosDoPedido()
 {
     console.log('Função chamada para exibir produtos do pedido!!!');
 
     let tr = '';
-    const listaProdutos = getProdutos();
-    let totalPedido = getTotal();
+    const listaProdutos = Pedido.getProdutos();
+    let totalPedido = Pedido.getTotal();
 
     listaProdutos.forEach(produtoSelecionado => {
         tr += `

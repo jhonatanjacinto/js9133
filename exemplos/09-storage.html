@@ -1,0 +1,33 @@
+<meta charset="utf-8">
+<h1>Front-end: Web Storage API</h1>
+
+<select id="seletorTema">
+    <option value="">-- Selecione um tema --</option>
+    <option value="green">Tema verde</option>
+    <option value="red">Tema vermelho</option>
+</select>
+
+<script>
+
+    // sessionStorage: guarda os dados de forma temporária no navegador (se o navegador ou a aba da aplicação
+    // for fechada, a informação é removida)
+    // localStorage: guarda os dados de forma permanente no navegador
+    // localStorage e sessionStorage = guardam somente informações textuais
+
+    let corEscolhida = localStorage.getItem('cor_do_tema');
+    const seletorTema = document.querySelector('#seletorTema');
+    document.body.style.backgroundColor = corEscolhida;
+
+    seletorTema.onchange = () => {
+        let corTema = seletorTema.value.trim();
+
+        if (corTema == "") {
+            alert('Por favor, seleciona um tema específico!');
+        }
+        else {
+            document.body.style.backgroundColor = corTema;
+            localStorage.setItem('cor_do_tema', corTema);
+        }
+    }
+
+</script>

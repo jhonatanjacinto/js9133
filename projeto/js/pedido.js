@@ -1,8 +1,6 @@
 
 // objeto que presenta o pedido
-const pedido = {
-    produtosSelecionados: []
-};
+const pedido = JSON.parse(sessionStorage.getItem('dadosPedido')) ?? { produtosSelecionados: [] };
 
 export function getProdutos()
 {
@@ -32,5 +30,8 @@ export function adicionarProduto(produtoSelecionado)
         // como o produto não está na lista, o adicionamos ao pedido
         pedido.produtosSelecionados.push(produtoSelecionado);
     }
+
+    // salvar o pedido no sessionStorage
+    sessionStorage.setItem('dadosPedido', JSON.stringify(pedido));
 }
 
