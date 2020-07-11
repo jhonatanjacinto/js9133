@@ -1,0 +1,40 @@
+<meta charset="utf-8">
+<h1>Atribuição por Desestruturação</h1>
+
+<script>
+
+    const usuario = {
+        username: "marcio.oliveira",
+        id: 5265,
+        nome: "Marcio",
+        sobrenome: "Oliveira",
+        email: "marciooliveira99@gmail.com",
+        isAtivo: true,
+        idade: 27,
+        cpf: '000000000',
+        endereco: {
+            logradouro: "Rua da Cruz",
+            numero: 54,
+            complemento: "N/A",
+            cidade: "Osasco",
+            estado: "SP"
+        }
+    }
+
+    // let id = usuario.id; 
+    // let email = usuario.email;
+    // let isAtivo = usuario.isAtivo;
+    let { id, email, isAtivo, cpf, endereco : { cidade } } = usuario;
+
+    console.log('E-mail: ', email);
+    console.log('Está ativo? ', isAtivo);
+    console.log('ID: ', id);
+    console.log('CPF: ', cpf);
+    console.log('Cidade: ', cidade);
+
+    // Desestruturação de Array
+    const valores = [12, 50, 5, 13, 80, 29, 61];
+    let [doze, cinquenta, , treze, ...resto] = valores;
+    console.log(doze, cinquenta, treze, resto);
+
+</script>

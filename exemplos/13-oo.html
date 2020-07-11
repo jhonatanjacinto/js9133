@@ -1,0 +1,65 @@
+<meta charset="utf-8">
+<h1>Orientação a Objetos com JavaScript</h1>
+<script>
+
+    // Objeto Genérico / Literal
+    const carro1 = {
+        modelo: 'Onix',
+        marca: 'Chevrolet',
+        ano: 2019,
+        andar() {
+            console.log('O carro ' + this.modelo + ' está andando...');
+        },
+        parar() {
+            console.log('O carro ' + this.modelo + ' está parando...');
+        }
+    }
+
+    // Funções Construtoras no JS (ES5)
+    function Carro(modelo = '', marca = '', ano = 0)
+    {
+        this.modelo = modelo;
+        this.marca = marca;
+        this.ano = ano;
+        this.andar = function() {
+            console.log('O carro ' + this.modelo + ' está andando...');
+        };
+        this.parar = function() {
+            console.log('O carro ' + this.modelo + ' está parando...');
+        }
+    }
+
+    function registrarCarro(carro)
+    {
+        if (carro instanceof Carro === false) {
+            alert('Tipo de dado deve ser um CARRO!');
+            return;
+        }
+
+        console.log('Registrando...');
+        console.log('Marca: ', carro.marca);
+        console.log('Modelo: ', carro.modelo);
+        console.log('Ano: ', carro.ano);
+        console.log('Testando atividades do carro: ');
+        carro.andar();
+        carro.parar();
+    }
+
+    // carros gerados a partir da função construtora
+    const carro2 = new Carro('Polo', 'Volkswagen', 2010);
+    const carro3 = new Carro();
+    carro3.modelo = 'Prisma';
+    carro3.marca = 'Chevrolet';
+    carro3.ano = 2019;
+
+    registrarCarro(carro1); // Não passa na validação porque é um Objeto Genérico
+    registrarCarro(carro2); // Passa na validação porque é um Objeto do Tipo Carro
+    registrarCarro(carro3); // Passa na validação porque é um  Objeto do Tipo Carro
+    registrarCarro(window); // Não passa na validação porque é um objeto do tipo Window
+    // registrarCarro(""); // Erro porque não é object (alerta)
+    // registrarCarro(50); // Erro porque não é object (alerta)
+    // registrarCarro(true); // Erro porque não é object (alerta)
+    
+
+
+</script>

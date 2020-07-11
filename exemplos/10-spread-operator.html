@@ -1,0 +1,20 @@
+<meta charset="utf-8">
+<h1>Spread Operador</h1>
+<script>
+
+    const nomes = ['Adriana', 'Roberto', 'Valéria'];
+    const nomesCompletos = ['Mara', 'Mateus', ...nomes, 'Bianca', 'Gabriel'];
+
+    console.log(nomes);
+    console.log(nomesCompletos);
+
+    function exibirNomes(nome1, nome2, nome3)
+    {
+        console.log('Nome 1: ', nome1);
+        console.log('Nome 2: ', nome2);
+        console.log('Nome 3: ', nome3);
+    }
+
+    exibirNomes( ...nomesCompletos ); // exibe Mara, Mateus e Adriana
+
+</script>

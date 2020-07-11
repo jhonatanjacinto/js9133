@@ -1,0 +1,7 @@
+DESAFIO
+    Fazer com que a lista de contatos seja salva no Storage do Browser de forma permanente
+    para que mesmo se o usuário fechar o navegador, quando acessar a página novamente veja 
+    seus contatos salvos anteriormente.
+
+    Ao invés de USAR id's de elementos HTML de forma direta, guardar as referências desses objetos
+    da maneira correta utilizando o objeto document para manipulação da DOM.

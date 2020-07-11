@@ -1,15 +1,16 @@
+import Pedido from "../model/Pedido.js";
 
 // objeto que presenta o pedido
-const pedido = JSON.parse(sessionStorage.getItem('dadosPedido')) ?? { produtosSelecionados: [] };
+const pedido = JSON.parse(sessionStorage.getItem('dadosPedido')) ?? new Pedido();
 
 export function getProdutos()
 {
-    return pedido.produtosSelecionados;
+    return pedido.produtos;
 }
 
 export function getTotal()
 {
-    return pedido.produtosSelecionados.reduce(function(totalPedido, produto) {
+    return pedido.produtos.reduce(function(totalPedido, produto) {
         return totalPedido + (produto.preco * produto.quantidade);
     }, 0);
 }
@@ -17,18 +18,18 @@ export function getTotal()
 export function adicionarProduto(produtoSelecionado)
 {
     // verifica se o produtoSelecionado pelo usuário já está na lista de produtos do pedido
-    let posicaoProduto = pedido.produtosSelecionados.findIndex(produto => produto.id == produtoSelecionado.id);
+    let posicaoProduto = pedido.produtos.findIndex(produto => produto.id == produtoSelecionado.id);
 
     // se estiver...
     if (posicaoProduto >= 0) 
     {
         // alteramos apenas a quantidade deste produto
-        pedido.produtosSelecionados[posicaoProduto].quantidade = produtoSelecionado.quantidade;
+        pedido.produtos[posicaoProduto].quantidade = produtoSelecionado.quantidade;
     }
     else 
     {
         // como o produto não está na lista, o adicionamos ao pedido
-        pedido.produtosSelecionados.push(produtoSelecionado);
+        pedido.produtos.push(produtoSelecionado);
     }
 
     // salvar o pedido no sessionStorage

@@ -1,5 +1,5 @@
-import * as Pedido from "./pedido.js";
-import formataMoeda from "./utils/formataMoeda.js";
+import * as PedidoController from "../controller/PedidoController.js";
+import formataMoeda from "../utils/formataMoeda.js";
 
 // Guardar as referências do HTML
 const tbodyProdutos = document.querySelector('#tbodyProdutos');
@@ -8,11 +8,9 @@ const tdTotalPedido = document.querySelector('#tdTotalPedido');
 exibirProdutosDoPedido();
 export function exibirProdutosDoPedido()
 {
-    console.log('Função chamada para exibir produtos do pedido!!!');
-
     let tr = '';
-    const listaProdutos = Pedido.getProdutos();
-    let totalPedido = Pedido.getTotal();
+    const listaProdutos = PedidoController.getProdutos();
+    let totalPedido = PedidoController.getTotal();
 
     listaProdutos.forEach(produtoSelecionado => {
         tr += `

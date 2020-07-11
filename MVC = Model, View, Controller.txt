@@ -1,0 +1,17 @@
+MVC = Model, View, Controller
+
+Model = Camada da aplicação que armazena os objetos customizados (modelos) que serão
+        utilizados: funções construtoras e classes;
+
+View = Camada da aplicação que lida com o interface de usuário (UI - HTML), ou seja,
+       tudo que tem a ver com manipular a DOM, lidar com interações do usuário, etc. fica
+       nessa camada: módulos que lidam diretamente com elementos na interface (botões, inputs, tabelas, etc);
+
+Controller = Camada que media a comunicação entre a VIEW e o MODEL. Nessa camada geralmente
+             ficam módulos que recebem informações da VIEW, validam essas informações e se estiverem OK
+             passam pra MODEL, se a MODEL retornar que tudo está OK, o CONTROLLER retorna uma 
+             resposta pra VIEW exibir para o usuário.
+
+Utils = Camada com funções e módulos de uso genérico: aplicação de máscaras, formatadores, etc.
+
+DAO / DL (Data Access Object / Data Layer) = Módulos que interagem especificamente com base de dados ou servidores de API's.

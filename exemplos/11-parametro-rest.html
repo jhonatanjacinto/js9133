@@ -1,0 +1,33 @@
+<meta charset="utf-8">
+<h1>Parâmetro REST</h1>
+
+<script>
+
+    // o parâmetro REST é um ARRAY sempre
+    function somarNumeros(...valores)
+    {
+        let resultado = valores.reduce((total, valor) => total + valor, 0);
+        console.log('Resultado da soma: ', resultado);
+    }
+
+    somarNumeros(5, 8); // 13
+    somarNumeros(8, 7, 10, 5, 12); // 42
+    somarNumeros(8, 3, 9); // 20
+
+    const numeros = [2, 2, 3];
+    somarNumeros(...numeros); // spread operator
+
+    function regiaoEstados(regiao, ...estados)
+    {
+        document.write(`
+            Região: ${regiao} <br>
+            Estados: ${estados}
+            <hr>
+        `);
+    }
+
+    regiaoEstados('Sul', 'PR', 'RS', 'SC');
+    regiaoEstados('Sudeste', 'SP', 'ES', 'RJ', 'MG');
+
+
+</script>

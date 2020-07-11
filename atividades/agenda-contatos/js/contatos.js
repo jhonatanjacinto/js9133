@@ -1,6 +1,8 @@
 import { exibirContatos } from "./tabelaContatos.js";
 
-export const contatos = [];
+export const contatos = JSON.parse(localStorage.getItem('contatos')) ?? [];
+
+exibirContatos();
 
 export function adicionarContato(nome, telefone)
 {
@@ -25,5 +27,8 @@ export function adicionarContato(nome, telefone)
             contatos.push(infoContato);
             exibirContatos();
         }
+
+        // salva os contatos no localStorage
+        localStorage.setItem('contatos', JSON.stringify(contatos));
     }
 }
