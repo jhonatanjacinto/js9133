@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<h1>Tratamento de Erros</h1>
+
+<script>
+
+    class MeuErro extends Error {
+        constructor(mensagem) {
+            super(mensagem);
+        }
+
+        toString() {
+            return this.message;
+        }
+    }
+
+    try 
+    {
+        var texto = prompt('Digite seu texto:')
+        if (texto.trim() === '') {
+            throw new MeuErro('Por favor, digite um texto válido!');
+        }
+    }
+    catch(erro) {
+        if (erro instanceof MeuErro) {
+            alert(erro);
+            console.error(erro.stack);
+        }
+        else {
+            alert('Um erro inesperado aconteceu na aplicação. Por favor, contate o administrador!');
+            console.error(erro);
+        }
+    }
+
+</script>

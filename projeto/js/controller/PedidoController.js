@@ -1,6 +1,8 @@
 import Pedido from "../model/Pedido.js";
+import Produto from "../model/Produto.js";
 
 // objeto que presenta o pedido
+/** @type {Pedido} */
 const pedido = JSON.parse(sessionStorage.getItem('dadosPedido')) ?? new Pedido();
 
 export function getProdutos()
@@ -15,6 +17,11 @@ export function getTotal()
     }, 0);
 }
 
+/**
+ * Função que valida e adiciona/atualiza um produto no Pedido
+ * @param {Produto} produtoSelecionado Produto a ser adicionado/atualizado no Pedido
+ * @return {void}
+ */
 export function adicionarProduto(produtoSelecionado)
 {
     // verifica se o produtoSelecionado pelo usuário já está na lista de produtos do pedido
