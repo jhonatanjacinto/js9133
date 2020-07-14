@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<h1>Prototype (ES5)</h1>
+
+<script>
+
+    // Funções Construtoras no JS (ES5)
+    function Carro(modelo = '', marca = '', ano = 0)
+    {
+        this.modelo = modelo;
+        this.marca = marca;
+        this.ano = ano;
+        this.opcionais = [];
+        Object.seal(this);
+    }
+
+    Carro.prototype.andar = function() {
+        console.log('O carro ' + this.modelo + ' está andando...');
+    }
+    Carro.prototype.parar = function() {
+        console.log('O carro ' + this.modelo + ' está parando...');
+    }
+
+    Object.seal(Carro.prototype);
+
+</script>

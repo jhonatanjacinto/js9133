@@ -1,4 +1,4 @@
-import { contatos } from "./contatos.js";
+import { contatos } from "../controller/ContatosController.js";
 
 // guardar as referências do HTML
 const tabelaContatos = document.querySelector('#tabelaContatos');

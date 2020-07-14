@@ -1,4 +1,5 @@
-import { exibirContatos } from "./tabelaContatos.js";
+import { exibirContatos } from "../view/tabelaContatos.js";
+import Contato from "../model/Contato.js";
 
 export const contatos = JSON.parse(localStorage.getItem('contatos')) ?? [];
 
@@ -17,7 +18,7 @@ export function adicionarContato(nome, telefone)
     else 
     {
         // ES6
-        const infoContato = { nome, telefone };
+        const infoContato = new Contato(nome, telefone);
         let contatoJaExiste = contatos.some(c => c.nome.toLowerCase() == nome.toLowerCase());
 
         if (contatoJaExiste) {

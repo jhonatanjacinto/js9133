@@ -1,4 +1,4 @@
-import { adicionarContato } from "./contatos.js";
+import { adicionarContato } from "../controller/ContatosController.js";
 
 // guardar as referências do HTML
 const btnSalvar = document.querySelector('#btnSalvar');

@@ -1,0 +1,28 @@
+<meta charset="utf-8">
+<h1>Classes do ES6</h1>
+<script>
+
+    class Carro {
+        constructor(modelo = '', marca = '', ano = 0) {
+            this.modelo = modelo;
+            this.marca = marca;
+            this.ano = ano;
+        }
+        
+        // método associado ao protótipo
+        andar() {
+            console.log('O carro ' + this.modelo + ' está andando...');
+        }
+
+        // método associado ao protótipo
+        parar() {
+            console.log('O carro ' + this.modelo + ' está parando...');
+        }
+    }
+
+    const carro1 = new Carro('Jetta', 'Volkswagen', 2020);
+    console.log(carro1);
+    carro1.andar();
+    carro1.parar();
+
+</script>

@@ -1,1 +1,1 @@
-import './formNovoContato.js';
+import './view/formNovoContato.js';

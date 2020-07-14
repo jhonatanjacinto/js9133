@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+<h1>Herança de Objetos (ES5)</h1>
+<script>
+
+    function Cliente(id, nome, email, senha, telefone)
+    {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+    }
+
+    Cliente.prototype.login = function() {
+        console.log('O usuário ' + this.nome + ' está fazendo login...');
+    }
+    Cliente.prototype.logout = function() {
+        console.log('O usuário ' + this.nome + ' está saindo da loja...');
+    }
+    Cliente.prototype.comprar = function() {
+        console.log('O usuário ' + this.nome + ' está comprando na loja...');
+    }
+
+    /** ----------------------------------------- **/
+
+    function ClienteVip(id, nome, email, senha, telefone, foto)
+    {
+        Cliente.call(this, id, nome, email, senha, telefone); // copie as propriedades do objeto pai
+        this.foto = foto;
+    }
+
+    // Copia as características do protótipo do objeto pai para o objeto filho
+    ClienteVip.prototype = Object.create(Cliente.prototype);
+    ClienteVip.prototype.constructor = ClienteVip;
+
+    ClienteVip.prototype.enviarMensagem = function() {
+        console.log('O usuário ' + this.nome + ' está enviando uma mensagem para a diretoria...');
+    }
+
+
+</script>
