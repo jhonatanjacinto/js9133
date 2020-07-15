@@ -1,20 +1,20 @@
 import Pedido from "../model/Pedido.js";
 import Produto from "../model/Produto.js";
+import ProdutoError from "../model/ProdutoError.js";
 
 // objeto que presenta o pedido
 /** @type {Pedido} */
 const pedido = JSON.parse(sessionStorage.getItem('dadosPedido')) ?? new Pedido();
+Object.setPrototypeOf(pedido, Pedido.prototype);
 
 export function getProdutos()
 {
-    return pedido.produtos;
+    return pedido.produtos.map(produto => Object.setPrototypeOf(produto, Produto.prototype));
 }
 
 export function getTotal()
 {
-    return pedido.produtos.reduce(function(totalPedido, produto) {
-        return totalPedido + (produto.preco * produto.quantidade);
-    }, 0);
+    return pedido.getTotal();
 }
 
 /**
@@ -24,6 +24,10 @@ export function getTotal()
  */
 export function adicionarProduto(produtoSelecionado)
 {
+    if (produtoSelecionado.quantidade <= 0) {
+        throw new ProdutoError('Quantidade inválida! Informe um valor maior ou igual a 1.', produtoSelecionado);
+    }
+
     // verifica se o produtoSelecionado pelo usuário já está na lista de produtos do pedido
     let posicaoProduto = pedido.produtos.findIndex(produto => produto.id == produtoSelecionado.id);
 
@@ -40,6 +44,18 @@ export function adicionarProduto(produtoSelecionado)
     }
 
     // salvar o pedido no sessionStorage
+    sessionStorage.setItem('dadosPedido', JSON.stringify(pedido));
+}
+
+export function removerProduto(id)
+{
+    let indiceProduto = pedido.produtos.findIndex(produto => produto.id == id);
+    
+    if (indiceProduto < 0) {
+        throw new ProdutoError('Produto não encontrado no seu Pedido!');
+    }
+
+    pedido.produtos.splice(indiceProduto, 1);
     sessionStorage.setItem('dadosPedido', JSON.stringify(pedido));
 }
 

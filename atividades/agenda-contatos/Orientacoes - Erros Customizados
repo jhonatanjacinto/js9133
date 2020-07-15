@@ -1,0 +1,3 @@
+1) Criar um ContatoError para exibição de erros customizados na agenda
+2) Trocar os tipos definidos como função construtora para classe do ES6
+3) Tratar os erros com try...catch...

@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+<h1>Ajax com JavaScript (ES5)</h1>
+
+<button id="btnCarregar">
+    Carregar dados externos
+</button>
+<button id="btnTeste">
+    Exibir Alerta de Teste
+</button>
+
+<div id="mostrarDados">
+    Os dados carregados serão exibidos aqui...
+</div>
+
+<script>
+
+    btnTeste.onclick = () => alert('Teste teste teste!!!');
+
+    btnCarregar.onclick = () => {
+        const ajax = new XMLHttpRequest();
+        ajax.open('GET', 'https://jhonatanjacinto.dev', true); // assíncrona
+        ajax.send();
+        btnCarregar.disabled = true;
+
+        ajax.addEventListener('load', () => {
+            mostrarDados.innerHTML = ajax.responseText;
+            alert('Dados carregados com sucesso!!!');
+            btnCarregar.disabled = false;
+        });
+        
+    }
+
+
+
+</script>

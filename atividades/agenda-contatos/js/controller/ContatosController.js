@@ -1,5 +1,6 @@
 import { exibirContatos } from "../view/tabelaContatos.js";
 import Contato from "../model/Contato.js";
+import ContatoError from "../model/ContatoError.js";
 
 export const contatos = JSON.parse(localStorage.getItem('contatos')) ?? [];
 
@@ -9,11 +10,11 @@ export function adicionarContato(nome, telefone)
 {
     if (!nome || !isNaN(nome)) 
     {
-        alert('Nome é obrigatório!');
+        throw new ContatoError('Nome é obrigatório!');
     }
     else if (telefone.length < 13) 
     {
-        alert('Telefone é obrigatório!');
+        throw new ContatoError('Telefone é obrigatório!');
     }
     else 
     {
@@ -22,7 +23,7 @@ export function adicionarContato(nome, telefone)
         let contatoJaExiste = contatos.some(c => c.nome.toLowerCase() == nome.toLowerCase());
 
         if (contatoJaExiste) {
-            alert('Contato já existe na sua agenda!');
+            throw new ContatoError('Contato já existe na sua agenda!', infoContato);
         }
         else {
             contatos.push(infoContato);
