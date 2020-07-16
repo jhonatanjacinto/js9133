@@ -26,9 +26,30 @@
             mostrarDados.innerHTML = ajax.responseText;
             alert('Dados carregados com sucesso!!!');
             btnCarregar.disabled = false;
-        });
-        
+        });        
     }
+
+    const promiseMensagem = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            let aleatorio = parseInt(Math.random() * 10);
+            if (aleatorio % 2 === 0) {
+                resolve('O número é par: ' + aleatorio);
+            }
+            else {
+                reject('O número é impar: ' + aleatorio);
+            }
+        }, 5000);
+    });
+
+    promiseMensagem
+        .then(function(resultado) {
+            console.log('Promise resolvida com sucesso!', resultado);
+        })
+        .catch(function(erro) {
+            console.error(erro);
+        });
+    
+   
 
 
 

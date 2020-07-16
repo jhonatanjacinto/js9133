@@ -1,6 +1,8 @@
 import Pedido from "../model/Pedido.js";
 import Produto from "../model/Produto.js";
 import ProdutoError from "../model/ProdutoError.js";
+import CorreiosError from "../model/CorreiosError.js";
+import { buscarEndereco } from "../data/CorreiosApi.js";
 
 // objeto que presenta o pedido
 /** @type {Pedido} */
@@ -59,3 +61,12 @@ export function removerProduto(id)
     sessionStorage.setItem('dadosPedido', JSON.stringify(pedido));
 }
 
+export async function getDadosEndereco(cep)
+{
+    if (isNaN(cep) || cep.length < 8) {
+        throw new CorreiosError('CEP inválido!', cep);
+    }
+
+    const dadosRetornados = await buscarEndereco(cep);
+    return dadosRetornados;
+}

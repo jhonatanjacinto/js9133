@@ -88,27 +88,27 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="input_nomeCompleto">* Nome completo:</label>
-                        <input type="text" class="form-control" placeholder="Digite seu nome" id="input_nomeCompleto" />
+                        <input type="text" class="form-control" placeholder="Digite seu nome" id="input_nomeCompleto" required data-mensagem="Nome é obrigatório!" />
                     </div>
                     <div class="form-group col-md-6">
                         <label for="input_email">* E-mail:</label>
-                        <input type="email" class="form-control" placeholder="Digite seu e-mail" id="input_email" />
+                        <input type="email" class="form-control" placeholder="Digite seu e-mail" id="input_email" required data-mensagem="E-mail inválido!" />
                     </div>
                     <div class="form-group col-md-6">
                         <label for="input_telefone">* Telefone/Celular:</label>
-                        <input type="tel" class="form-control" placeholder="(00) 9?0000-0000" id="input_telefone" />
+                        <input type="tel" class="form-control" placeholder="(00) 9?0000-0000" id="input_telefone" required data-mensagem="Telefone inválido!" />
                     </div>
                     <div class="form-group col-md-2">
                         <label for="input_cep">* CEP:</label>
-                        <input type="text" class="form-control" maxlength="8" placeholder="00000000" id="input_cep" />
+                        <input type="text" class="form-control" maxlength="8" placeholder="00000000" id="input_cep" required data-mensagem="CEP inválido!" />
                     </div>
                     <div class="form-group col-md-4">
                         <label for="input_endereco">* Endereço:</label>
-                        <input type="text" class="form-control" placeholder="..." id="input_endereco" disabled>
+                        <input type="text" class="form-control" placeholder="..." id="input_endereco" disabled required data-mensagem="Endereço é obrigatório!" />
                     </div>
                     <div class="form-group col-md-1">
                         <label for="input_numero">* Nº:</label>
-                        <input type="text" class="form-control" placeholder="..." id="input_numero" disabled>
+                        <input type="number" class="form-control" placeholder="..." id="input_numero" disabled required data-mensagem="Número é obrigatório!">
                     </div>
                     <div class="form-group col-md-5">
                         <label for="input_complemento">Complemento:</label>
@@ -116,15 +116,15 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="input_bairro">* Bairro:</label>
-                        <input type="text" class="form-control" placeholder="..." id="input_bairro" disabled>
+                        <input type="text" class="form-control" placeholder="..." id="input_bairro" disabled required data-mensagem="Bairro é obrigatório!">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="input_cidade">* Cidade:</label>
-                        <input type="text" class="form-control" placeholder="..." id="input_cidade" disabled>
+                        <input type="text" class="form-control" placeholder="..." id="input_cidade" disabled required data-mensagem="Cidade é obrigatório!">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="seletor_estado">* Estado:</label>
-                        <select class="form-control custom-select" id="seletor_estado" disabled>
+                        <select class="form-control custom-select" id="seletor_estado" disabled required data-mensagem="Estado é obrigatório!">
                             <option>--</option>
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>

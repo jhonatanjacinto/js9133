@@ -1,0 +1,37 @@
+<meta charset="utf-8">
+<h1>Ajax com Fetch API | (ES6)</h1>
+
+<button id="btnCarregar">
+    Carregar dados externos
+</button>
+<button id="btnTeste">
+    Exibir Alerta de Teste
+</button>
+
+<div id="mostrarDados">
+    Os dados carregados serão exibidos aqui...
+</div>
+
+<script>
+
+    btnTeste.onclick = () => alert('Teste teste');
+
+    btnCarregar.onclick = () => {
+        btnCarregar.disabled = true;
+
+        fetch('https://jhonatanjacinto.dev')
+            .then(respostaServidor => respostaServidor.text())
+            .then(dadosCarregados => {
+                mostrarDados.innerHTML = dadosCarregados;
+                alert('Dados carregados com sucesso!');
+            })
+            .catch(erro => {
+                alert('Deu ruim!!!');
+                console.error(erro);
+            })
+            .finally(() => {
+                btnCarregar.disabled = false;
+            });
+    }
+
+</script>

@@ -1,0 +1,77 @@
+- click no botão
+ - conectar com o banco de dados (db)
+  - lista de assentos disponíveis para compra (db)
+   - registrar o assento que eu quero (db)
+    - realizar pagamento do assento comprado (API)
+     - sucesso! (OK)
+
+
+1) Acesso a banco de dados
+2) Acessos a dados externos (banco de dados ou APIs)
+3) Lidar com arquivos 
+4) Envio de email
+----
+
+CALLBACK HELL
+btnComecaProcessamento.addEventListener('click', function() {
+    const conexao = conectarBancoDados();
+    conexao.addEventListener('connected', function() {
+        const listaAssentos = getListaDeAssentos(conexao);
+        listaAssentos.addEventListener('load', function() {
+            const status = registarAssento(55);
+            status.addEventListener('registered', function() {
+                const statusPagamento = realizarPagamento();
+                statusPagamento.addEventListener('paid', function() {
+                    alert('Operação realizada com sucesso!!!');
+                });
+                statusPagamento.addEventListener('error', function() {
+                    // trata o erro do pagamento
+                })
+            });
+            status.addEventListener('error', function() {
+                // trata erro de registro
+            })
+        });
+        listaAssentos.addEventListener('error', function() {
+            // erro carregamento da lista
+        })
+    });
+    conexao.addEventListener('error', function() {
+        alert('Erro ao conectar no banco de dados')
+    })
+});
+
+// PROMISES (ES6)
+btnComecaProcessamento.addEventListener('click', function() {
+    conectarBancoDados()
+        .then(conexao => getListaDeAssentos(conexao))
+        .then(() => registarAssento(55))
+        .then(() => realizarPagamento())
+        .then(() => alert('Operação realizada com sucesso!!!'))
+        .catch(erro => {
+            console.error(erro);
+        });
+});
+
+// PROMISES (ES7) = Async / Await
+btnComecaProcessamento.addEventListener('click', async function() {
+    try
+    {
+        const conexao = await conectarBancoDados(); // retornar um objeto PROMISE
+        const lista = await getListaDeAssentos(conexao);
+        await registarAssento(55);
+        await realizarPagamento();
+        alert('Operação realizada com sucesso!');
+    }
+    catch(erro) 
+    {
+        console.error(erro);
+    }
+});
+
+function conectarBancoDados()
+{
+    return new Promise(function() {
+        // 
+    })
+}

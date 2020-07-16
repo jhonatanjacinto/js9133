@@ -1,0 +1,39 @@
+<meta charset="utf-8">
+<h1>Ajax com Fetch API | Async/Await (ES7)</h1>
+
+<button id="btnCarregar">
+    Carregar dados externos
+</button>
+<button id="btnTeste">
+    Exibir Alerta de Teste
+</button>
+
+<div id="mostrarDados">
+    Os dados carregados serão exibidos aqui...
+</div>
+
+<script>
+
+    btnTeste.onclick = () => alert('Teste teste');
+
+    btnCarregar.onclick = async () => {
+        try 
+        {
+            btnCarregar.disabled = true;
+            // espera o fetch receber as informações do servidor e as guarda na constante respostaServidor
+            const respostaServidor = await fetch('https://jhonatanjacinto.dev');
+            // espera os dados recebidos do servidor serem convertidos em texto e guarda o resultado em dadosCarregados
+            let dadosCarregados = await respostaServidor.text();
+            mostrarDados.innerHTML = dadosCarregados;
+            alert('Dados carregados com sucesso!');
+        }
+        catch(erro) {
+            alert('Deu ruim!!!');
+            console.error(erro);
+        }
+        finally {
+            btnCarregar.disabled = false;
+        }
+    }
+
+</script>
