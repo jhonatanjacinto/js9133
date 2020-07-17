@@ -5,10 +5,11 @@ import CorreiosError from "../model/CorreiosError.js";
 import { buscarEndereco } from "../data/CorreiosApi.js";
 import PedidoError from "../model/PedidoError.js";
 import { salvarPedidoServer } from "../data/PedidosApi.js";
+import { exibirCodigoPedido } from "../view/blocoFinalizacaoPedido.js";
 
 // objeto que presenta o pedido
 /** @type {Pedido} */
-const pedido = JSON.parse(sessionStorage.getItem('dadosPedido')) ?? new Pedido();
+let pedido = JSON.parse(sessionStorage.getItem('dadosPedido')) ?? new Pedido();
 Object.setPrototypeOf(pedido, Pedido.prototype);
 
 export function getProdutos()
@@ -89,9 +90,10 @@ export async function enviarPedido(formularioPedido)
     // salva os dados na base de dados da API
     await salvarPedidoServer(pedido);
 
-    // excluir os dados do pedido no sessionStorage
+    // exibe o código do pedido para o usuário
+    exibirCodigoPedido(pedido.id);
 
-    // atualizar a exibição dos produtos na tabela
-
-    // exibir o código do pedido pro Usuário!!!
+    // excluir os dados do pedido no sessionStorage e da memória
+    pedido = new Pedido();
+    sessionStorage.clear();
 }

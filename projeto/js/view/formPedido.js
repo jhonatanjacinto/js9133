@@ -1,6 +1,7 @@
 import CorreiosError from "../model/CorreiosError.js";
 import PedidoError from "../model/PedidoError.js";
 import * as PedidoController from "../controller/PedidoController.js";
+import { exibirProdutosDoPedido } from "./tabelaProdutosPedido.js";
 
 // guardar referências da interface HTML
 const btnEnviarPedido = document.querySelector('#btnEnviarPedido');
@@ -68,6 +69,8 @@ btnEnviarPedido.addEventListener('click', async () => {
         await PedidoController.enviarPedido(formPedido);
         // limpar os campos do formulário
         todosOsCampos.forEach(campo => campo.value = '');
+        // limpa a tabela de produtos do pedido
+        exibirProdutosDoPedido();
     }
     catch(erro)
     {

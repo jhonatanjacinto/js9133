@@ -4,7 +4,7 @@ export default class Pedido
 {
     constructor() 
     {
-        this.id = 0; // gerar um ID de forma automática
+        this.id = getRandomId();
         this.nomeCompleto = null;
         this.email = null;
         this.telefone = null;
@@ -24,4 +24,10 @@ export default class Pedido
     getTotal() {
         return this.produtos.reduce((total, produto) => total + produto.getSubtotal(), 0);
     }
+}
+
+function getRandomId()
+{
+    let numeroAleatorio = parseInt(Math.random() * 10000);
+    return numeroAleatorio.toString().padStart(5, '0');
 }
