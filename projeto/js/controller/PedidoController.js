@@ -3,6 +3,8 @@ import Produto from "../model/Produto.js";
 import ProdutoError from "../model/ProdutoError.js";
 import CorreiosError from "../model/CorreiosError.js";
 import { buscarEndereco } from "../data/CorreiosApi.js";
+import PedidoError from "../model/PedidoError.js";
+import { salvarPedidoServer } from "../data/PedidosApi.js";
 
 // objeto que presenta o pedido
 /** @type {Pedido} */
@@ -69,4 +71,27 @@ export async function getDadosEndereco(cep)
 
     const dadosRetornados = await buscarEndereco(cep);
     return dadosRetornados;
+}
+
+export async function enviarPedido(formularioPedido)
+{
+    // passa os valores dos campos presentes no objeto formularioPedido
+    // para as propriedades correspondentes no objeto pedido
+    for (let propriedade in formularioPedido) {
+        let propReferencia = propriedade.replace(/(input_|seletor_)/g, '');
+        pedido[propReferencia] = formularioPedido[propriedade].value;
+    }
+
+    if (pedido.produtos.length < 1) {
+        throw new PedidoError('Seu pedido precisa pelo menos ter 1 produto adicionado!', pedido);
+    }
+
+    // salva os dados na base de dados da API
+    await salvarPedidoServer(pedido);
+
+    // excluir os dados do pedido no sessionStorage
+
+    // atualizar a exibição dos produtos na tabela
+
+    // exibir o código do pedido pro Usuário!!!
 }

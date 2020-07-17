@@ -47,10 +47,10 @@ formPedido.input_cep.addEventListener('change', async () => {
 
 /* Quando o usuário clicar no botão de envio do pedido, pegamos as informações dos campos obrigatórios e 
    validamos antes de inseri-las no Pedido final */
-btnEnviarPedido.addEventListener('click', () => {
+btnEnviarPedido.addEventListener('click', async () => {
     try 
     {
-        const validadorEmail = /[a-zA-Z\._-]+\@[a-zA-Z\._-]+\.[a-zA-Z]{2,}\.?[a-zA-Z]{2,}?/g;
+        const validadorEmail = /^[a-zA-Z0-9_+-]+[a-zA-Z0-9._+-]*[a-zA-Z0-9_+-]+@[a-zA-Z0-9_+-]+[a-zA-Z0-9._+-]*[.]{1,1}[a-zA-Z]{2,}$/;
 
         for (let campo of camposObrigatorios)
         {
@@ -63,6 +63,11 @@ btnEnviarPedido.addEventListener('click', () => {
                 throw new PedidoError(campo.dataset.mensagem);
             }
         }
+
+        // prepara o pedido e o envia para ser salvo no servidor
+        await PedidoController.enviarPedido(formPedido);
+        // limpar os campos do formulário
+        todosOsCampos.forEach(campo => campo.value = '');
     }
     catch(erro)
     {
