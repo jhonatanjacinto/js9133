@@ -1,1 +1,1 @@
-[]
+[{"id":0,"nomeCompleto":"Jhonatan","email":"jhonatan.jacinto@gmail.com","telefone":"(11) 95786-1851","cep":"06390550","endereco":"Travessa Mariliana Regina","bairro":"Cidade Ariston Estela Azevedo","cidade":"Carapicuíba","estado":"SP","numero":"30","complemento":"Casa 1","observacoes":"Teste","status":1,"produtos":[{"id":1,"nome":"Pizza de Calabresa","foto":"pizza-calabresa.jpg","preco":52.99,"quantidade":"1"}]}]
