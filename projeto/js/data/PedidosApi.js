@@ -14,3 +14,13 @@ export async function salvarPedidoServer(pedido)
     console.log(statusServidor);
 }
 
+export async function getStatusPedidoServer(codigoPedido)
+{
+    const parametros = new URLSearchParams();
+    parametros.append('codigoPedido', codigoPedido);
+
+    let urlGet = urlBase + '/status-pedido?' + parametros;
+    const resposta = await fetch(urlGet);
+    const statusPedidoServer = await resposta.json();
+    return statusPedidoServer;
+}

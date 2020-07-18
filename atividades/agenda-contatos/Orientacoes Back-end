@@ -1,0 +1,19 @@
+http://localhost:8888/agenda/api/lista-contatos
+    - Retorna a lista de contatos salvos no back-end
+    - Não é necessário passar parâmetros
+
+http://localhost:8888/agenda/api/salvar-contatos?lista=[LISTA DE CONTATOS EM JSON]
+método POST
+parâmetro lista = [LISTA DE CONTATOS EM JSON]
+
+
+1) ContatosController
+    - criar a função salvarContatos responsável por pegar a lista de contatos em memória e enviar para o servidor node
+    - Remover toda a lógica de salvamento dos dados no localStorage
+    - criar a função getContatos que busca os dados no servidor node e guarda na variável que guarda a lista de contatos em
+      memória
+
+Dica:
+    Todas as operações que envolverem acesso ao servidor no back-end
+    são operações assíncronas, se for usado async/await para essas operações, todas 
+    as funções que executarem outras funções que realizam operações assíncronas devem ser async também.

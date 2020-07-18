@@ -40,6 +40,24 @@ const app = http.createServer((request, response) => {
             const resposta = { status: 1, mensagem: 'Pedido salvo com sucesso!' };
             response.end(JSON.stringify(resposta));
         }
+
+        else if (pathname === '/api/status-pedido')
+        {
+            let codigoPedido = url.parse(request.url, true).query.codigoPedido;
+            const listaPedidosJson = fs.readFileSync('./db/pedidos.json', 'utf8');
+            const listaPedidos = JSON.parse(listaPedidosJson);
+
+            const pedidoEncontrado = listaPedidos.find(p => p.id == codigoPedido);
+
+            if (pedidoEncontrado) {
+                const statusResposta = JSON.stringify({ codigo: pedidoEncontrado.status });
+                response.end(statusResposta);
+            }
+            else {
+                const statusResposta = JSON.stringify({ codigo: 0, mensagem: 'Pedido não encontrado no servidor!' });
+                response.end(statusResposta);
+            }
+        }
     }
     else 
     {

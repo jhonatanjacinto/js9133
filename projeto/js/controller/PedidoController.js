@@ -4,7 +4,7 @@ import ProdutoError from "../model/ProdutoError.js";
 import CorreiosError from "../model/CorreiosError.js";
 import { buscarEndereco } from "../data/CorreiosApi.js";
 import PedidoError from "../model/PedidoError.js";
-import { salvarPedidoServer } from "../data/PedidosApi.js";
+import { salvarPedidoServer, getStatusPedidoServer } from "../data/PedidosApi.js";
 import { exibirCodigoPedido } from "../view/blocoFinalizacaoPedido.js";
 
 // objeto que presenta o pedido
@@ -96,4 +96,19 @@ export async function enviarPedido(formularioPedido)
     // excluir os dados do pedido no sessionStorage e da memória
     pedido = new Pedido();
     sessionStorage.clear();
+}
+
+export async function getStatusPedido(codigoPedido)
+{
+    if (!codigoPedido) {
+        throw new PedidoError('Código do Pedido é inválido!');
+    }
+
+    // passar para a API verificar no servidor e retornar seu resultado
+    const statusPedido = await getStatusPedidoServer(codigoPedido);
+    if (statusPedido.codigo == 0) {
+        throw new PedidoError('Pedido não encontrado em nossa base de dados!');
+    }
+
+    return statusPedido;
 }

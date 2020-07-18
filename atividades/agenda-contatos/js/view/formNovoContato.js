@@ -6,12 +6,12 @@ const btnSalvar = document.querySelector('#btnSalvar');
 const inputNome = document.querySelector('#inputNome');
 const inputTelefone = document.querySelector('#inputTelefone');
 
-btnSalvar.addEventListener('click', () => {
+btnSalvar.addEventListener('click', async () => {
     try 
     {
         let nome = inputNome.value.trim();
         let telefone = inputTelefone.value.trim();
-        adicionarContato(nome, telefone);
+        await adicionarContato(nome, telefone);
     }
     catch(erro) 
     {

@@ -8,17 +8,20 @@ const btnAdicionarProduto = document.querySelector('#btnAdicionarProduto');
 const seletor_produto = document.querySelector('#seletor_produto');
 const input_quantidade = document.querySelector('#input_quantidade');
 
-const listaProdutos = ProdutoController.getListaProdutos();
-let opcoes = '';
-for (let produto of listaProdutos) {
-    opcoes += `
-        <option value="${produto.id}">
-            ${produto.nome}
-        </option>
-    `;
-}
-seletor_produto.innerHTML = opcoes;
+(async () => {
 
+    const listaProdutos = await ProdutoController.getListaProdutos();
+    let opcoes = '';
+    for (let produto of listaProdutos) {
+        opcoes += `
+            <option value="${produto.id}">
+                ${produto.nome}
+            </option>
+        `;
+    }
+    seletor_produto.innerHTML = opcoes;
+
+})();
 
 // ao clicar no botão, validamos os campos e criamos uma linha na tabela com o produto selecionado
 btnAdicionarProduto.addEventListener('click', () => {
